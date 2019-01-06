@@ -1,4 +1,24 @@
-const alwaysSuccessful = () => new Promise(resolve => setTimeout(resolve, 1000))
-const alwaysFailure = () => new Promise((resolve, reject) => setTimeout(reject, 1000))
-const randomNumber = () => new Promise(resolve => setTimeout(() => resolve(Math.floor(Math.random() * 10)), 1000))
-const sometimesSuccessful = () => randomNumber().then(k => k % 2 === 0 ? alwaysSuccessful() : alwaysFailure())
+const alwaysSuccessful = () => {
+    return new Promise(resolve => setTimeout(resolve, 1000))
+};
+
+const alwaysFailure = () => {
+    return new Promise((resolve, reject) => setTimeout(reject, 1000))
+};
+
+const randomNumber = () => {
+    return new Promise(resolve => setTimeout(() => resolve(Math.floor(Math.random() * 10)), 1000))
+};
+
+const sometimesSuccessful = () => {
+    return randomNumber().then(k => k % 2 === 0 ? alwaysSuccessful() : alwaysFailure())
+};
+
+
+// problem 1
+alwaysSuccessful()
+    .then(() => {
+        console.log('hello');;
+    });
+
+// problem 2 
