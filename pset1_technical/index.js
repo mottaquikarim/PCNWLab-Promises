@@ -106,3 +106,13 @@ alwaysSuccessful()
 }, _ => {
     console.log(`invocation complete!`)
 });
+
+// problem 7
+
+Promise.all([randomNumber(),randomNumber(),randomNumber(),])
+.then ((data) => {
+    console.log('all the randoms');
+    for (let datum of data) {
+        console.log (datum);
+    }
+});
