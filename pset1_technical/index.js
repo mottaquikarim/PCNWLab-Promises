@@ -41,3 +41,16 @@ alwaysSuccessful()
     }, _ => {
         console.log('hello failure problem 3');
     });
+
+//problem 4
+
+randomNumber()
+.then( (rnd) => {
+    console.log('First Random', rnd);
+    return randomNumber();
+}).then( (rnd) => {
+    console.log('Second Random', rnd);
+    return randomNumber();
+}).then( (rnd) => {
+    console.log('Third Random', rnd);
+});
