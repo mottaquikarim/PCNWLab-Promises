@@ -22,3 +22,10 @@ alwaysSuccessful()
     });
 
 // problem 2 
+
+alwaysFailure()
+.then(() => {
+    console.log('this will never fire');
+}, _ => {
+    console.log('hello failure');
+});
