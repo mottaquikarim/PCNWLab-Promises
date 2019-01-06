@@ -80,3 +80,29 @@ alwaysSuccessful()
 }, _ => {
     console.log(`FAILED`)
 });
+
+// problem 6
+
+
+alwaysSuccessful()
+.then(() => {
+    return sometimesSuccessful()
+})
+.then(_ => {
+
+    console.log(`invocation complete!`)
+    return sometimesSuccessful();
+}, _ => {
+    console.log(`invocation complete!`)
+    return sometimesSuccessful();
+}).then(_ => {
+    console.log(`invocation complete!`)
+    return sometimesSuccessful();
+}, _ => {
+    console.log(`invocation complete!`)
+    return sometimesSuccessful();
+}).then(_ => {
+    console.log(`invocation complete!`)
+}, _ => {
+    console.log(`invocation complete!`)
+});
