@@ -116,3 +116,35 @@ Promise.all([randomNumber(),randomNumber(),randomNumber(),])
         console.log (datum);
     }
 });
+
+
+// problem 8
+
+Promise.all([randomNumber(),randomNumber(),randomNumber(),])
+.then ((data) => {
+    console.log('Together');
+    console.log(data.join(', '));
+});
+
+const rnd1 = alwaysSuccessful()
+.then (() => {
+    return randomNumber()
+})
+
+const rnd2 = alwaysSuccessful()
+.then (() => {
+    return randomNumber()
+})
+
+const rnd3 = alwaysSuccessful()
+.then (() => {
+    return randomNumber()
+})
+
+
+Promise.all([rnd1, rnd2, rnd3])
+.then((data) => {
+    console.log('rnd SEQUENTIALLY');
+    console.log(data.join(', '));
+});
+
