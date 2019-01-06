@@ -54,3 +54,29 @@ randomNumber()
 }).then( (rnd) => {
     console.log('Third Random', rnd);
 });
+
+// problem 5
+
+
+alwaysSuccessful()
+.then(() => {
+    return sometimesSuccessful()
+})
+.then(_ => {
+
+    console.log(`SUCCESS!`)
+    return sometimesSuccessful();
+}, _ => {
+    console.log(`FAILED`)
+    return sometimesSuccessful();
+}).then(_ => {
+    console.log(`SUCCESS!`)
+    return sometimesSuccessful();
+}, _ => {
+    console.log(`FAILED`)
+    return sometimesSuccessful();
+}).then(_ => {
+    console.log(`SUCCESS!`)
+}, _ => {
+    console.log(`FAILED`)
+});
