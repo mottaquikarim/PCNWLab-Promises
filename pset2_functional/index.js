@@ -40,12 +40,14 @@ const copyFile = (fileName) => {
     });
 };
 
-const copyFile2 = fileName => readFilePromise(fileName)
-    .then(data => writeFilePromise(`${fileName}_copy`, data))
+// const copyFile2 = fileName => readFilePromise(fileName)
+//     .then(data => writeFilePromise(`${fileName}_copy`, data))
 
 copyFile2('index.js').then(_ => console.log('look ma im done'))
 
 const concatFiles = (fileNames, newFile) => {
+     
+
     return new Promise((resolve, reject) => {
         const newData = [];
         for (let i = 0; i < fileNames.length; i++) {
