@@ -24,8 +24,20 @@ alwaysSuccessful()
 // problem 2 
 
 alwaysFailure()
-.then(() => {
-    console.log('this will never fire');
-}, _ => {
-    console.log('hello failure');
-});
+    .then(() => {
+        console.log('this will never fire');
+    }, _ => {
+        console.log('hello failure');
+    });
+
+//problem 3
+
+alwaysSuccessful()
+    .then(() => {
+        console.log('hello success');;
+        return alwaysFailure()
+    }).then(() => {
+        console.log('this will never fire');
+    }, _ => {
+        console.log('hello failure problem 3');
+    });
