@@ -123,7 +123,7 @@ Promise.all([randomNumber(),randomNumber(),randomNumber(),])
 Promise.all([randomNumber(),randomNumber(),randomNumber(),])
 .then ((data) => {
     console.log('Together');
-    console.log(data.join(', '));
+    console.log(data.join(','));
 });
 
 const rnd1 = alwaysSuccessful()
@@ -145,6 +145,8 @@ const rnd3 = alwaysSuccessful()
 Promise.all([rnd1, rnd2, rnd3])
 .then((data) => {
     console.log('rnd SEQUENTIALLY');
-    console.log(data.join(', '));
+    console.log(data.join(','));
 });
+
+
 
