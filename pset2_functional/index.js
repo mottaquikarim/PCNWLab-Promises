@@ -138,20 +138,20 @@ const concatFiles = (arr) => {
 
 const splitFiles = (fileName, delimiter = '\n') => {
     return readTxtFilePromise(fileName)
-    .then((originalData) => {
-        const arr = originalData.split(delimiter);
-        const prom = arr.reduce((acc, e, i) => {
-            acc.push(writeTxtFilePromise(`${fileName}-${i}`, e))
-            return acc;
-        }, [])
-        return Promise.all(prom);
-    });
-}; 
+        .then((originalData) => {
+            const arr = originalData.split(delimiter);
+            const prom = arr.reduce((acc, e, i) => {
+                acc.push(writeTxtFilePromise(`${fileName}-${i}`, e))
+                return acc;
+            }, [])
+            return Promise.all(prom);
+        });
+};
 
-readTxtFilePromise('foo')
-.then((data)=> {
-    console.log(data);
-})
+// readTxtFilePromise('foo')
+// .then((data)=> {
+//     console.log(data);
+// })
 
 /*
 splitFiles('foo', ',').then(()=> {
@@ -161,3 +161,40 @@ splitFiles('foo', ',').then(()=> {
 })
 
 */
+
+const requestPromise = (url) => {
+    return new Promise((resolve, reject) => {
+        request.get(url, (err, res, body) => {
+            if (err) reject(err)
+            else resolve(res, body);
+        })
+    });
+};
+
+
+const api_key = 'siIyo4w5mg0REENX76Sr57QTgkt3BWvY';
+const search = 'avengers';
+const url = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${search}&limit=2`;
+
+
+
+const firstRequest = requestPromise(url)
+    // .then((res, body) => {
+
+    //     console.log('res body', JSON.parse(res.body));
+    //     console.log('body', body);
+
+    // }).catch((err) => {
+    //     console.log(err);
+    // })
+
+
+
+const search2 = 'spongebob';
+const url2 = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${search2}&limit=2`;
+const secondRequest =requestPromise(url2)
+
+Promise.all([firstRequest, secondRequest])
+.then((data) => {
+    console.log(data);
+})
