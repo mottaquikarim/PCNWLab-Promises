@@ -25,6 +25,19 @@ const writeFilePromise = (fileName, data) => {
     });
 };
 
+const writeTxtFilePromise = (fileName, data) => {
+    return new Promise((resolve, reject) => {
+
+        fs.writeFile(`./${fileName}.txt`, data, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve();
+            }
+        });
+    });
+};
+
 const copyFile = (fileName) => {
 
     return new Promise((resolve, reject) => {
@@ -66,12 +79,12 @@ const concatFiles = (arr) => {
 };
 
 
-concatFiles(arr).then( (data)=> {
-    console.log(data.reduce((acc,e) => {
-        acc += JSON.stringify(e);
-        return acc;
-    }, ''))
-});
+// concatFiles(arr).then( (data)=> {
+//     console.log(data.reduce((acc,e) => {
+//         acc += JSON.stringify(e);
+//         return acc;
+//     }, ''))
+// });
 
 
 // writeFilePromise('test2', {
@@ -106,3 +119,5 @@ concatFiles(arr).then( (data)=> {
 //     .then(() => {
 //         console.log('test copied')
 //     });
+
+writeTxtFilePromise('foo', "One,World,Two,Lives");
