@@ -178,7 +178,7 @@ const url = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${search}
 
 
 
-const firstRequest = requestPromise(url)
+// const firstRequest = requestPromise(url)
     // .then((res, body) => {
 
     //     console.log('res body', JSON.parse(res.body));
@@ -192,9 +192,43 @@ const firstRequest = requestPromise(url)
 
 const search2 = 'spongebob';
 const url2 = `https://api.giphy.com/v1/gifs/search?api_key=${api_key}&q=${search2}&limit=2`;
-const secondRequest =requestPromise(url2)
+// const secondRequest =requestPromise(url2)
 
+/*
 Promise.all([firstRequest, secondRequest])
 .then((data) => {
     console.log(data);
+})
+*/
+/*
+Open Weather
+const api_key = '2d3d97dc77ad68ed64beb4e04ea81937';
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${api_key}`;
+
+*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*
+
+API: Dark Sky 
+const api_key = '2997b4a60f5867d642c137e48b2245b3';
+const url = `https://wt-taqqui_karim-gmail_com-0.sandbox.auth0-extend.com/darksky?api_key=${api_key}&lat=${lat}&lng=${lon}`;
+
+*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*~~~~*
+
+Giphy
+
+const api_key = 'siIyo4w5mg0REENX76Sr57QTgkt3BWvY';
+*/
+
+
+const OW_key = '2d3d97dc77ad68ed64beb4e04ea81937';
+const location = 'New York City';
+const OW_URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${OW_key}`;
+
+requestPromise(OW_URL)
+.then((res, body) => {
+    // console.log('res: ', res)
+    console.log('body: ', body)
+    console.log('SUCCESS!')
+
+}, (err) => {
+    console.log('There was an ERROR: ', err)
 })
