@@ -1,4 +1,5 @@
 const fs = require('fs');
+const request = require('request');
 
 const readFilePromise = (fileName) => {
     return new Promise((resolve, reject) => {
@@ -152,9 +153,11 @@ readTxtFilePromise('foo')
     console.log(data);
 })
 
-
+/*
 splitFiles('foo', ',').then(()=> {
     console.log('it worked')
 }, () => {
     console.log('it broke')
 })
+
+*/
