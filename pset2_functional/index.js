@@ -133,4 +133,28 @@ const concatFiles = (arr) => {
 //         console.log('test copied')
 //     });
 
-writeTxtFilePromise('foo', "One,World,Two,Lives");
+// writeTxtFilePromise('foo', "One,World,Two,Lives");
+
+const splitFiles = (fileName, delimiter = '\n') => {
+    return readTxtFilePromise(fileName)
+    .then((originalData) => {
+        const arr = originalData.split(delimiter);
+        const prom = arr.reduce((acc, e, i) => {
+            acc.push(writeTxtFilePromise(`${fileName}-${i}`, e))
+            return acc;
+        }, [])
+        return Promise.all(prom);
+    });
+}; 
+
+readTxtFilePromise('foo')
+.then((data)=> {
+    console.log(data);
+})
+
+
+splitFiles('foo', ',').then(()=> {
+    console.log('it worked')
+}, () => {
+    console.log('it broke')
+})
