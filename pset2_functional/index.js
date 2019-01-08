@@ -25,6 +25,19 @@ const writeFilePromise = (fileName, data) => {
     });
 };
 
+const readTxtFilePromise = (fileName) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(`./${fileName}.txt`, 'utf-8', (err, data) => {
+            if (err) {
+                reject();
+            } else if (data) {
+                resolve(data);
+            };
+        });
+    });
+};
+
+
 const writeTxtFilePromise = (fileName, data) => {
     return new Promise((resolve, reject) => {
 
